@@ -32,6 +32,6 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 func TimeHandler(w http.ResponseWriter, r *http.Request) {
 	now := time.Now()
-	res := now.GoString()
+	res := now.Format(time.RFC3339Nano)
 	fmt.Fprint(w, res)
 }
