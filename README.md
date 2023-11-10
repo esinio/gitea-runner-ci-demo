@@ -6,6 +6,7 @@ A gitea runner ci demo
 ### gitea runner
 ``` shell
 docker run -itd \
+    -e GITEA_RUNNER_NAME=<gitea-runner-name> \
     -e GITEA_INSTANCE_URL=<gitea-server> \
     -e GITEA_RUNNER_REGISTRATION_TOKEN=<gitea-runner-token> \
     -v /var/run/docker.sock:/var/run/docker.sock \
