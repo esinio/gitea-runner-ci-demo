@@ -37,6 +37,6 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
-            esinio/gitea-runner-ci-demo:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:latest
       - run: echo "🍏 This job's status is ${{ job.status }}."
             
