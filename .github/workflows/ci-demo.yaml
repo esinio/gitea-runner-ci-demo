@@ -16,8 +16,6 @@ jobs:
         run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Github!"
       - 
         run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - 
-        name: Checkout repository code
       -
         name: Checkout
         uses: actions/checkout@v3
