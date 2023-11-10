@@ -1,5 +1,5 @@
-name: Gitea Actions CI Demo
-run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
+name: Github Actions CI Demo
+run-name: ${{ github.actor }} is testing out Github Actions 🚀
 
 on:
   push:
@@ -7,9 +7,17 @@ on:
       - "main"
 
 jobs:
-  Explore-Gitea-Actions:
+  Explore-Github-Actions:
     runs-on: ubuntu-latest
     steps:
+      - 
+        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - 
+        run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Github!"
+      - 
+        run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - 
+        name: Checkout repository code
       -
         name: Checkout
         uses: actions/checkout@v3
