@@ -1,0 +1,52 @@
+name: Test setup-go Actions
+run-name: ${{ github.actor }} is testing out Github Actions 🚀
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  Explore-Actions:
+    runs-on: ubuntu-latest
+    container:
+      image: catthehacker/ubuntu:act-latest
+    steps:
+      - 
+        name: Show details
+        run: |
+          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Github!"
+          echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - 
+        name: Checkout repository code
+        uses: actions/checkout@v4
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - 
+        name: List files in the repository
+        run: |
+          echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          echo "🖥️ The workflow is now ready to test your code on the runner."
+          ls ${{ github.workspace }}
+      - 
+        name: Setup golang
+        uses: actions/setup-go@v4
+        with:
+          go-version: '>=1.21.0'
+      - 
+        name: Run golang scripts
+        run: |
+            go env -w GOPROXY='https://goproxy.cn,direct'
+            go env
+            go run cmd/helloworld/main.go
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
