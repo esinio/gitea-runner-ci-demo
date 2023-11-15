@@ -1,5 +1,5 @@
 name: Test setup-go Actions
-run-name: ${{ github.actor }} is testing out Github Actions 🚀
+run-name: ${{ github.actor }} is testing out Github Actions of setup-go 🚀
 
 on:
   push:
@@ -7,10 +7,8 @@ on:
       - "main"
 
 jobs:
-  Explore-Actions:
+  Explore-Github-Actions:
     runs-on: ubuntu-latest
-    container:
-      image: catthehacker/ubuntu:act-latest
     steps:
       - 
         name: Show details
@@ -21,15 +19,15 @@ jobs:
       - 
         name: Checkout repository code
         uses: actions/checkout@v4
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
       - 
         name: List files in the repository
         run: |
           echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
           echo "🖥️ The workflow is now ready to test your code on the runner."
           ls ${{ github.workspace }}
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
       - 
         name: Setup golang
         uses: actions/setup-go@v4
