@@ -14,3 +14,17 @@ docker run -itd \
     gitea/act_runner:latest
 
 ```
+
+``` shell
+docker run \
+    -v $PWD/config.yaml:/config.yaml \
+    -v $PWD/data:/data \
+    -v $PWD/cache:/root/.cache \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -e CONFIG_FILE=/config.yaml \
+    -e GITEA_INSTANCE_URL=https://gitea.example.com/ \
+    -e GITEA_RUNNER_REGISTRATION_TOKEN=mytoken \
+    -e GITEA_RUNNER_NAME=local-cached \
+    -p 18000:18000 \
+    -d gitea/act_runner:nightly
+```
